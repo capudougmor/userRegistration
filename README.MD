@@ -8,7 +8,7 @@ User Registration é uma aplicação backend construída para avaliação da **O
 A aplicação consiste no registro de usuarios com endereços cadastrados, esta api possui três rotas, sendo duas para inserção e uma para o retorno de um usuario específico com seu endereços.
 
 ## Modelo conceitual
-![Modelo Conceitual](https://github.com/acenelio/assets/raw/main/sds1/modelo-conceitual.png)
+![Modelo Conceitual](https://github.com/capudougmor/userRegistration/blob/master/src/main/resources/static/Images/conceito.bmp)
 
 # Tecnologias utilizadas
 ## Back end
@@ -16,9 +16,6 @@ A aplicação consiste no registro de usuarios com endereços cadastrados, esta 
 - Spring Boot
 - JPA / Hibernate
 - Maven
-## Implantação em produção
-- Back end: Heroku
-- Banco de dados: Postgresql
 
 # Como executar o projeto
 
@@ -27,7 +24,7 @@ Pré-requisitos: Java 11
 
 ```bash
 # clonar repositório
-git clone https://github.com/devsuperior/sds1-wmazoni
+git clone https://github.com/capudougmor/userRegistration
 
 # entrar na pasta do projeto back end
 cd backend
