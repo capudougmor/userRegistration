@@ -8,9 +8,6 @@ public class BadRequestExceptions extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public BadRequestExceptions() {
-		super("Bad request");
+		super("User dont registred");
 	}
-
-
-
 }

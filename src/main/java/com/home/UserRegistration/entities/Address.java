@@ -21,12 +21,19 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty(message = "Street cannot be empty or null")
 	private String street;
+	@NotEmpty(message = "Number cannot be empty or null")
 	private String num;
+	@NotEmpty(message = "Complement cannot be empty or null")
 	private String complement;
+	@NotEmpty(message = "District cannot be empty or null")
 	private String district;
+	@NotEmpty(message = "City cannot be empty or null")
 	private String city;
+	@NotEmpty(message = "State cannot be empty or null")
 	private String state;
+	@NotEmpty(message = "CEP cannot be empty or null")
 	private String cep;
 
 	@JsonIgnore
@@ -121,31 +128,6 @@ public class Address implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Address other = (Address) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 }

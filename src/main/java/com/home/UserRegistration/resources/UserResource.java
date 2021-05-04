@@ -1,7 +1,6 @@
 package com.home.UserRegistration.resources;
 
 import java.net.URI;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -24,22 +23,18 @@ public class UserResource {
 
 	@Autowired
 	private UserService service;
-
-	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll();
-		return ResponseEntity.ok().body(list);
-	}
 	
-	@PostMapping(path = "/valid")
+	@PostMapping
 	public ResponseEntity<User> insert(@RequestBody @Valid User user) {
 		User validUser = service.insert(user);
 		if(validUser == null) {
 			user = service.insert(user);
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+					.path("/{id}").buildAndExpand(user.getId()).toUri();
 			return ResponseEntity.created(uri).body(user);
 		}
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(user.getId()).toUri();
 		return ResponseEntity.created(uri).body(user);
 	}
 

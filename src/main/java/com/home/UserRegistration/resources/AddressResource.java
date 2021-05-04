@@ -2,6 +2,8 @@ package com.home.UserRegistration.resources;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +28,7 @@ public class AddressResource {
 	private UserService userService;
 	
 	@PostMapping(value = "/{id}")
-	public ResponseEntity<Address> insert(@PathVariable Long id, @RequestBody Address obj)  {
+	public ResponseEntity<Address> insert(@PathVariable Long id, @Valid @RequestBody Address obj)  {
 		User user = userService.findById(id);
 		obj.setUser(user);
 		obj = service.insert(obj);

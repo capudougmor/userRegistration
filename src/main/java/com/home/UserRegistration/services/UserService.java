@@ -1,6 +1,5 @@
 package com.home.UserRegistration.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -19,16 +18,6 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 
-	public List<User> findAll() {
-		return repository.findAll();
-	}
-
-	public User findById(Long id) {
-		Optional<User> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new BadRequestExceptions());
-	}
-	
-	@Transactional
 	public User insert(User user) throws RuntimeException {
 		User obj = repository.findByCpf(user.getCpf());
 		User obj2 = repository.findByEmail(user.getEmail());
@@ -38,4 +27,8 @@ public class UserService {
 			return repository.save(user);
 	}
 
+	public User findById(Long id) {
+		Optional<User> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new BadRequestExceptions());
+	}
 }

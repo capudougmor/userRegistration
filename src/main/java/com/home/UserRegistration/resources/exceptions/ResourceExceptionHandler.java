@@ -39,11 +39,10 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 		StandardError err = new StandardError(Instant.now(), status.value(), error, errors);
 		return ResponseEntity.status(status).body(err);
 	}
-	
+
 	private List<ErrorList> getErrors(MethodArgumentNotValidException ex) {
-	    return ex.getBindingResult().getFieldErrors().stream()
-	            .map(error -> new ErrorList(error.getDefaultMessage(), error.getField()))
-	            .collect(Collectors.toList());
+		return ex.getBindingResult().getFieldErrors().stream()
+				.map(error -> new ErrorList(error.getDefaultMessage(), error.getField())).collect(Collectors.toList());
 	}
 
 	@ExceptionHandler(PropertyValueException.class)
